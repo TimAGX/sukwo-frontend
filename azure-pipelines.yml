@@ -44,5 +44,5 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az webapp config container set --name <app-name> --resource-group <resource-group-name> --docker-custom-image-name <acr-name>.azurecr.io/$(imageRepository):$(tag) --docker-registry-server-url https://<acr-name>.azurecr.io
-          az webapp restart --name <app-name> --resource-group <resource-group-name>
+          az webapp config container set --name sukwowebapp --resource-group sukwo --docker-custom-image-name sukwochatbotfe.azurecr.io/$(imageRepository):$(tag) --docker-registry-server-url https://sukwochatbotfe.azurecr.io
+          az webapp restart --name sukwowebapp --resource-group sukwo
