@@ -43,7 +43,7 @@ stages:
       inputs:
         azureSubscription: 'Azure subscription 1(1)(7fd2d34f-fe5e-4cd6-81fb-d7ef5b32c079)'
         scriptType: 'bash' 
-        scriptLocation: 'scriptPath'
+        scriptLocation: 'inlineScript'
         scriptPath: 
         inlineScript: |
           az webapp config container set --name sukwowebapp --resource-group sukwo --docker-custom-image-name sukwochatbotfe.azurecr.io/$(imageRepository):$(tag) --docker-registry-server-url https://sukwochatbotfe.azurecr.io
