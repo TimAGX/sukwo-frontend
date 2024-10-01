@@ -37,3 +37,12 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+# Add the AzureCLI task after building and pushing the image
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Azure subscription 1(7fd2d34f-fe5e-4cd6-81fb-d7ef5b32c079)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az webapp config container set --name <app-name> --resource-group <resource-group-name> --docker-custom-image-name <acr-name>.azurecr.io/$(imageRepository):$(tag) --docker-registry-server-url https://<acr-name>.azurecr.io
+          az webapp restart --name <app-name> --resource-group <resource-group-name>
