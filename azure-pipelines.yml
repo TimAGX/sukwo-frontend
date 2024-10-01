@@ -11,6 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'b4053d6c-adff-4862-9d1a-7e261c18e352'
+  Azuresubscription: '7fd2d34f-fe5e-4cd6-81fb-d7ef5b32c079'
   imageRepository: 'chatbotfront'
   containerRegistry: 'sukwochatbotfe.azurecr.io'
   dockerfilePath: '**/Dockerfile'
@@ -40,7 +41,7 @@ stages:
 # Add the AzureCLI task after building and pushing the image
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'Azure subscription 1(7fd2d34f-fe5e-4cd6-81fb-d7ef5b32c079)'
+        azureSubscription: $(Azuresubscription)
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
